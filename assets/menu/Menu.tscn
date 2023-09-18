@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Splash.png" type="Texture" id=1]
+[ext_resource path="res://assets/menu/music/New Hope.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/hud/fonts/standar_style.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/hud/fonts/NokiaCellphoneFC.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/hud/fonts/title_style.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/menu/Menu.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 13
+outline_size = 1
+outline_color = Color( 0.00392157, 0.0627451, 0.176471, 1 )
+extra_spacing_char = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 15
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 7
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.0
+autoplay = true
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -68.0
+margin_top = -50.5
+margin_right = 68.0
+margin_bottom = 50.5
+
+[node name="leedeo" type="Label" parent="VBoxContainer"]
+margin_right = 136.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 1 )
+text = "LEEDEO"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 21.0
+margin_right = 136.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 5 )
+text = "SPACESHIP"
+align = 1
+valign = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+margin_top = 47.0
+margin_right = 136.0
+margin_bottom = 72.0
+custom_colors/font_color_hover = Color( 1, 0.984314, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Start"
+flat = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 76.0
+margin_right = 136.0
+margin_bottom = 101.0
+custom_colors/font_color_hover = Color( 1, 0.980392, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 190.0
+rect_scale = Vector2( 1, 1.01791 )
+
+[node name="Footer" type="Label" parent="MarginContainer"]
+margin_top = 15.0
+margin_right = 190.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 3 )
+text = "Developed by deOrtaSoftware"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
