@@ -1,16 +1,24 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (PackedScene) var Shoot
 
 
-# Called when the node enters the scene tree for the first time.
+const SPEED = 100
+onready var motion = Vector2.ZERO
+onready var can_shoot : bool = true
+onready var screensize = get_viewport_rect().size
+
+
 func _ready():
-	pass # Replace with function body.
+		$AnimationSprite.play()
 
+func _physics_process(delta):
+	motion_ctrl()
+	animation_ctrl()
+	motion = move_and_collide(motion * delta)
+	
+func _input(event):
+	if event.is_action_pressed("ui_accept") and can_shoot:
+		shoot_ctrl()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+		
