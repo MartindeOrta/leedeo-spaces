@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Los Redondos- Luzbelito (64 kbps).mp3-4d953f0aa955ad2f7496524da3cd540b.mp3str"
+
+[deps]
+
+source_file="res://assets/level/music/Los Redondos- Luzbelito (64 kbps).mp3"
+dest_files=[ "res://.import/Los Redondos- Luzbelito (64 kbps).mp3-4d953f0aa955ad2f7496524da3cd540b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
