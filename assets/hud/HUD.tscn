@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/hud/music/Game Over.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/hud/HUD.gd" type="Script" id=2]
+[ext_resource path="res://assets/hud/fonts/NokiaCellphoneFC.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 13
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 19
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -10.0
+
+[node name="ScoreConteiner" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreConteiner"]
+margin_right = 58.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="ScoreConteiner/HBoxContainer"]
+margin_top = 12.0
+margin_right = 44.0
+margin_bottom = 27.0
+custom_fonts/font = SubResource( 2 )
+text = "Score"
+
+[node name="Score" type="Label" parent="ScoreConteiner/HBoxContainer"]
+margin_left = 48.0
+margin_top = 11.0
+margin_right = 58.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 3 )
+text = "0"
+
+[node name="GameOverContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -24.5
+margin_bottom = 24.5
+
+[node name="Label" type="Label" parent="GameOverContainer"]
+margin_right = 144.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+
+[node name="Buttons" type="HBoxContainer" parent="GameOverContainer"]
+margin_top = 28.0
+margin_right = 144.0
+margin_bottom = 49.0
+alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverContainer/Buttons"]
+margin_left = 7.0
+margin_right = 78.0
+margin_bottom = 21.0
+custom_colors/font_color_hover = Color( 0.992157, 0.913725, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Restart"
+flat = true
+
+[node name="Menu" type="Button" parent="GameOverContainer/Buttons"]
+margin_left = 82.0
+margin_right = 136.0
+margin_bottom = 21.0
+custom_colors/font_color_hover = Color( 1, 0.890196, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Menu"
+flat = true
+
+[connection signal="pressed" from="GameOverContainer/Buttons/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="GameOverContainer/Buttons/Menu" to="." method="_on_Menu_pressed"]
