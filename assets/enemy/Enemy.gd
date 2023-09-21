@@ -3,9 +3,13 @@ extends Area2D
 export (PackedScene) var Explosion
 var speed
 
+var listanimate = ["edu","Cesar","Boli"]
 func _ready():
+	print((randi() % 3 ))
+	$AnimatedSprite.animation = listanimate[randi() % len(listanimate)]
+
 	$AnimatedSprite.play()
-	speed = GLOBAL.random(32, 42)
+	speed = GLOBAL.random(GLOBAL.vel_min, GLOBAL.vel_max)
 	
 func _physics_process(delta):
 	position.y += speed * delta
@@ -26,6 +30,9 @@ func _on_Enemy_area_entered(area):
 	if area.is_in_group("shoot"):
 		death_enemy()
 		GLOBAL.score += 10
+		if GLOBAL.score % 50 == 0:
+			GLOBAL.vel_max *= 1.2
+			GLOBAL.vel_min *= 1.2
 	
 	 # Replace with function body.
 
